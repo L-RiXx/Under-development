@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#0c0c0f">
+  <meta name="description" content="This project is currently under development.">
+
+  <title>Under Development — L-RiXx</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0c0f;
+      --surface: #131318;
+      --text: #f0f0f5;
+      --muted: #858590;
+      --accent: #b8ff65;
+      --border: #282830;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, 900px);
+      margin-inline: auto;
+    }
+
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span,
+    .accent {
+      color: var(--accent);
+    }
+
+    .back {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: color 180ms ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-block: 55px 75px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font: 0.8rem monospace;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    /* Text */
+
+    h1 {
+      margin-top: 4px;
+      font-size: clamp(2rem, 7vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.055em;
+    }
+
+    .description {
+      max-width: 390px;
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-name {
+      color: var(--accent);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 28px;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--muted);
+      font: 0.75rem monospace;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 17px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.85rem;
+      transition: 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .button.primary {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    footer {
+      padding-block: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    @media (max-width: 500px) {
+      main {
+        padding-block: 35px 55px;
+      }
+
+      .description {
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <a class="logo" href="https://l-rixx.github.io">
+        L<span>-</span>RiXx
+      </a>
+
+      <a class="back" href="https://l-rixx.github.io">
+        ← Main site
+      </a>
+    </header>
+
+    <main>
+      <p class="eyebrow">// UNDER DEVELOPMENT</p>
+
+      <h1>
+        Forging <span class="accent">the future.</span>
+      </h1>
+
+      <p class="description">
+        <span class="project-name" id="project-name">This project</span>
+        is still being forged.
+        The code is taking shape, but the source isn't public yet.
+      </p>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        FORGING IN PROGRESS
+      </div>
+
+      <div class="actions">
+        <a class="button primary" href="https://l-rixx.github.io">
+          Back to Main ↗
+        </a>
+
+        <a class="button" href="https://github.com/L-RiXx">
+          GitHub Profile ↗
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> L-RiXx</p>
+      <p>Designed with intention. <span>Built with curiosity.</span></p>
+    </footer>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const project = params.get("project");
+
+    if (project && /^[a-zA-Z0-9 _-]{1,60}$/.test(project)) {
+      document.getElementById("project-name").textContent = project;
+      document.title = `${project} — Under Development`;
+    }
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
